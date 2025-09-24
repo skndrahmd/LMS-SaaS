@@ -1,7 +1,13 @@
 import CompanionCard from "@/components/CompanionCard";
 import { Search, ChevronDown } from "lucide-react";
+import { getAllCompanions } from "@/lib/actions/companion.actions";
 
-const companionLibrary = () => {
+
+
+const companionLibrary = async () => {
+  const companions = await getAllCompanions()
+  console.log(companions)
+
   return (
     <div className="bg-gray-50">
     <main className="p-6 bg-gray-50">
@@ -34,41 +40,28 @@ const companionLibrary = () => {
         </div>
       </div>
       <div className="flex flex-wrap gap-4">
-        <CompanionCard
-          subject="Mathematics"
-          title="Algebra"
-          topic="Linear Equations"
-          duration="10"
-          bgColor="orange"
-        />
-        <CompanionCard
-          subject="Mathematics"
-          title="Algebra"
-          topic="Linear Equations"
-          duration="10"
-          bgColor="orange"
-        />
-        <CompanionCard
-          subject="Mathematics"
-          title="Algebra"
-          topic="Linear Equations"
-          duration="10"
-          bgColor="orange"
-        />
-        <CompanionCard
-          subject="Mathematics"
-          title="Algebra"
-          topic="Linear Equations"
-          duration="10"
-          bgColor="orange"
-        />
-        <CompanionCard
-          subject="Mathematics"
-          title="Algebra"
-          topic="Linear Equations"
-          duration="10"
-          bgColor="orange"
-        />
+        {companions.companions && Array.isArray(companions.companions) ? 
+          [companions.companions].map((companion: any) => (
+            <CompanionCard
+              key={companion.id}
+              subject={companion.subject}
+              title={companion.name}
+              topic={companion.topic}
+              duration={companion.duration.toString()}
+              bgColor="orange"
+            />
+          )) : 
+          companions.companions ? (
+            <CompanionCard
+              key={companions.companions.id}
+              subject={companions.companions.subject}
+              title={companions.companions.name}
+              topic={companions.companions.topic}
+              duration={companions.companions.duration.toString()}
+              bgColor="orange"
+            />
+          ) : null
+        }
       </div>
     </main>
     </div>

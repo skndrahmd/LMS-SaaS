@@ -65,7 +65,7 @@ const CompanionForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-[50%] py-6 ">
                 <FormField
                     control={form.control}
                     name="name"
@@ -214,7 +214,12 @@ const CompanionForm = () => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="w-full cursor-pointer">Build Your Companion</Button>
+                <Button type="submit" className="w-full cursor-pointer bg-orange-500 hover:bg-orange-600 text-white">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14m-7-7v14"/>
+                    </svg>
+                    Build Your Companion
+                </Button>
             </form>
         </Form>
     )
