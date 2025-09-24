@@ -41,7 +41,7 @@ const companionLibrary = async () => {
       </div>
       <div className="flex flex-wrap gap-4">
         {companions.companions && Array.isArray(companions.companions) ? 
-          [companions.companions].map((companion: any) => (
+          companions.companions.map((companion: any) => (
             <CompanionCard
               key={companion.id}
               subject={companion.subject}
@@ -50,17 +50,7 @@ const companionLibrary = async () => {
               duration={companion.duration.toString()}
               bgColor="orange"
             />
-          )) : 
-          companions.companions ? (
-            <CompanionCard
-              key={companions.companions.id}
-              subject={companions.companions.subject}
-              title={companions.companions.name}
-              topic={companions.companions.topic}
-              duration={companions.companions.duration.toString()}
-              bgColor="orange"
-            />
-          ) : null
+          )) : null
         }
       </div>
     </main>

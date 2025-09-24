@@ -19,7 +19,7 @@ export const getAllCompanions = async () => {
     console.log('Companion ID:', companions?.[0]?.id)
 
     // Return the first companion from the array since insert().select() returns an array
-    return {companions: companions?.[0]}
+    return {companions}
 }
 
 
