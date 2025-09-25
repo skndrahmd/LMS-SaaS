@@ -2,12 +2,14 @@ import React from "react";
 import Link from "next/link";
 
 const CompanionCard = ({
+  id,
   subject,
   title,
   topic,
   duration,
   bgColor,
 }: {
+  id: string;
   subject: string;
   title: string;
   topic: string;
@@ -35,7 +37,7 @@ const CompanionCard = ({
         </svg>
         {duration} mins duration
       </p>
-      <Link href="/companion-library/{id}" className="w-full">
+      <Link href={`/companion-library/${id}`} className="w-full">
         <button className="btn-primary w-full justify-center">Launch Session</button>
       </Link>
     </div>
